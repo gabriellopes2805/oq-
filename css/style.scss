@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  font-family: "Indie Flower";
+}
+
+$sunset: linear-gradient(
+  to bottom,
+  #3b1c32,
+  #7c444f 30%,
+  #9f5255 50%,
+  #e16a54 75%,
+  #f39e60 100%
+);
+$night: linear-gradient(
+  to bottom,
+  black,
+  #1a1a1d 30%,
+  #3b1c32 50%,
+  #6a1e55 75%,
+  #a64d79 100%
+);
+
+// CÉU 🌌
+
+body {
+  background-color: #1a1a1d;
+}
+
+#background {
+  background-repeat: no-repeat;
+  background-image: $sunset;
+  transition: all 0.2s;
+  overflow: hidden;
+  position: fixed;
+  height: 100svh;
+  width: 100svw;
+  z-index: -1;
+  opacity: 0;
+  left: 0;
+  top: 0;
+}
+
+#background2 {
+  background-repeat: no-repeat;
+  background-image: $night;
+  transition: all 0.2s;
+  overflow: hidden;
+  position: fixed;
+  height: 100svh;
+  width: 100svw;
+  z-index: -2;
+  left: 0;
+  top: 0;
+}
+
+#bg {
+  overflow: hidden;
+  position: fixed;
+  height: 100svh;
+  width: 100svw;
+  left: 0;
+  top: 0;
+}
+
+.estrela {
+  background-image: radial-gradient(white, transparent);
+  transition: all 0.2s;
+  border-radius: 50%;
+  position: fixed;
+  opacity: 0.8;
+
+  @for $i from 1 through 320 {
+    &:nth-child(#{$i}) {
+      animation: piscar #{calc(random(5) / (random(2) / 1.7))}s infinite;
+      $tamanhoEstrela: random(5) * 1px;
+      height: $tamanhoEstrela;
+      width: $tamanhoEstrela;
+      left: random(100) * 1%;
+      top: random(100) * 1%;
+      z-index: 1000000000;
+    }
+  }
+}
+
+section {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100svh;
+  width: 100svw;
+  display: flex;
+  left: 0;
+  top: 0;
+
+  #content {
+    filter: drop-shadow(2px 2px 2px black);
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+    height: 3rem;
+    width: 4.4rem;
+
+    input {
+      position: absolute;
+      z-index: 1000;
+      height: 100%;
+      width: 100%;
+      opacity: 0;
+    }
+
+    #toggle {
+      transition: all 0.2s ease-in-out;
+      background-color: skyblue;
+      border-radius: 1rem;
+      position: absolute;
+      cursor: pointer;
+      height: 20px;
+      width: 100%;
+    }
+
+    .night {
+      background-color: #1a1a1d !important;
+    }
+
+    #togglecircle {
+      transition: all 0.2s ease-in-out;
+      background-color: yellow;
+      position: absolute;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      z-index: 10;
+      left: 0;
+    }
+
+    .nightcircle {
+      background-color: honeydew !important;
+      left: calc(100% - 40px) !important;
+    }
+
+    #check {
+      cursor: pointer;
+    }
+  }
+}
+
+#section1 {
+  display: none;
+
+  #p {
+    max-width: 55svw;
+  }
+}
+
+@keyframes piscar {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
